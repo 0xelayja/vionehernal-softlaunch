@@ -15,4 +15,7 @@ window.addEventListener('click', e => {
 });
 
 
-                                                                                                
+if (window.innerWidth <= 768) {
+  window.location.href = "mobile-v1.html";
+}
+
