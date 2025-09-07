@@ -17,40 +17,38 @@
       background: #0B1F3F;
       color: white;
       text-align: center;
-      font-size: 0.7rem;
-      padding: 0.25rem 0.4rem;
+      font-size: 0.6rem; /* smaller */
+      padding: 0.15rem 0.3rem; /* thinner */
       position: fixed;
       top: 0; left: 0;
       width: 100%;
       z-index: 20;
     }
-    .top-banner a { color: white; font-weight: 500; text-decoration: underline; }
 
     /* Navbar */
     .navbar {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 10px 16px;
+      padding: 6px 14px; /* slimmer */
       background: rgba(255, 255, 255, 0.95);
       position: fixed;
-      top: 1.5rem;
+      top: 1.2rem; /* lower since banner smaller */
       width: 100%;
       z-index: 15;
       border-bottom: 1px solid #eee;
     }
     .navbar .logo {
       font-family: 'Playfair Display', serif;
-      font-size: 1rem;
+      font-size: 0.9rem; /* smaller */
       font-weight: 400;
       color: #111;
       text-transform: uppercase;
       letter-spacing: 1px;
     }
-    .nav-links { display: none; }
     .nav-icons a {
-      font-size: 1.2rem;
-      margin-left: 10px;
+      font-size: 1rem; /* reduced */
+      margin-left: 8px;
       color: #111;
       text-decoration: none;
     }
@@ -59,7 +57,7 @@
     .hero, .hero-2 {
       position: relative;
       width: 100%;
-      height: 70vh;
+      height: 65vh;
       display: flex;
       justify-content: center;
       align-items: center;
@@ -82,19 +80,19 @@
     }
     .hero-text-1 h1, .hero-text-2 h2 {
       font-family: 'Playfair Display', serif;
-      font-size: 1.8rem;
+      font-size: 1.6rem;
       color: white;
-      margin-bottom: 0.8rem;
+      margin-bottom: 0.6rem;
     }
     .hero-text-1 p {
-      font-size: 0.85rem;
+      font-size: 0.8rem;
       color: #eee;
-      line-height: 1.4;
-      margin-bottom: 1.2rem;
+      line-height: 1.3;
+      margin-bottom: 1rem;
     }
     .hero-text-1 .btn {
-      padding: 8px 18px;
-      font-size: 0.75rem;
+      padding: 6px 16px;
+      font-size: 0.7rem;
       border: 1px solid white;
       color: white;
       text-decoration: none;
@@ -105,16 +103,16 @@
     .bottom-boxes {
       display: flex;
       flex-direction: column;
-      gap: 1rem;
-      padding: 1rem;
-      margin-top: 1rem;
+      gap: 0.6rem; /* reduced gap */
+      padding: 0.6rem;
+      margin-top: 0.8rem;
     }
     .bottom-boxes .box {
       position: relative;
       width: 100%;
-      height: 50vh;
+      height: 45vh;
       overflow: hidden;
-      border-radius: 10px;
+      border-radius: 8px;
     }
     .bottom-boxes .box video {
       width: 100%; height: 100%;
@@ -128,11 +126,11 @@
     }
     .section h2 {
       font-family: 'Playfair Display', serif;
-      font-size: 1.4rem;
-      margin-bottom: 0.5rem;
+      font-size: 1.2rem;
+      margin-bottom: 0.4rem;
     }
     .section p {
-      font-size: 0.9rem;
+      font-size: 0.85rem;
       color: #444;
       line-height: 1.4;
     }
@@ -180,74 +178,46 @@
       z-index: 3;
     }
 
-    /* ========== ADDED: Mobile Image Slider Styles (only added these) ========== */
-    .mobile-image-slider {
+    /* ========== Luxury Slider ========== */
+    .luxury-slider {
       position: relative;
       width: 100%;
-      height: 50vh;
+      height: 60vh;
       overflow: hidden;
-      border-radius: 10px;
-      background: #000;
-      display: flex;
-      align-items: center;
-      justify-content: center;
     }
-    .mobile-image-slider .slides {
+    .luxury-slider .slides {
       display: flex;
-      width: 200%; /* two slides */
       height: 100%;
       transition: transform 0.35s ease;
-      transform: translateX(0);
     }
-    .mobile-image-slider .slide {
-      width: 50%;
-      flex: 0 0 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+    .luxury-slider .slide {
+      flex: 0 0 85%; /* peek next image */
+      margin-right: 5%;
+      border-radius: 8px;
+      overflow: hidden;
     }
-    .mobile-image-slider .slide img {
+    .luxury-slider .slide img {
       width: 100%;
       height: 100%;
       object-fit: cover;
       display: block;
     }
-    .mobile-image-slider .dots {
+    /* Luxury progress line */
+    .luxury-slider .progress {
+      width: 60%;
+      height: 2px;
+      background: rgba(255,255,255,0.3);
+      margin: 8px auto 0;
+      position: relative;
+    }
+    .luxury-slider .progress .bar {
       position: absolute;
-      bottom: 10px;
-      left: 50%;
-      transform: translateX(-50%);
-      display: flex;
-      gap: 8px;
-      z-index: 5;
+      top: 0; left: 0;
+      height: 100%;
+      width: 50%; /* half since 2 slides */
+      background: linear-gradient(to right, gold, white);
+      transition: transform 0.3s ease;
     }
-    .mobile-image-slider .dot {
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
-      background: rgba(255,255,255,0.6);
-    }
-    .mobile-image-slider .dot.active {
-      background: #fff;
-    }
-    /* small swipe hint line (slide icon down) */
-    .mobile-image-slider .swipe-line {
-      position: absolute;
-      bottom: 34px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 36px;
-      height: 3px;
-      border-radius: 2px;
-      background: rgba(255,255,255,0.45);
-      z-index: 4;
-    }
-    /* adjust spacing so slider doesn't collide with top fixed elements */
-    @media (max-width: 480px) {
-      .bottom-boxes { margin-top: 2.6rem; } /* keep some space under fixed navbar */
-    }
-    /* ========== END ADDED SLIDER STYLES ========== */
-
   </style>
 </head>
 <body>
@@ -268,7 +238,7 @@
 
   <!-- Hero -->
   <section class="hero">
-    <video autoplay muted loop playsinline preload="auto" id="hero-video-1">
+    <video autoplay muted loop playsinline preload="auto">
       <source src="background/loop/loop-background-2.mp4" type="video/mp4">
     </video>
     <div class="hero-text-1">
@@ -280,36 +250,23 @@
 
   <!-- Boxes -->
   <section class="bottom-boxes">
-    <!-- keep first video box unchanged -->
+    <!-- First video box -->
     <div class="box">
       <video autoplay muted loop playsinline preload="auto">
         <source src="background/loop/loop-background-4.mp4" type="video/mp4">
       </video>
     </div>
 
-    <!-- ====== INSERTED: Mobile image slider (keeps everything else unchanged) ====== -->
-    <div class="mobile-image-slider" aria-hidden="false">
-      <div class="slides" id="mobileSlides">
-        <div class="slide">
-          <img src="images/model/model-1.jpg" alt="Model 1">
-        </div>
-        <div class="slide">
-          <img src="images/model/model-2.jpg" alt="Model 2">
-        </div>
+    <!-- Luxury slider -->
+    <div class="luxury-slider">
+      <div class="slides" id="luxurySlides">
+        <div class="slide"><img src="images/model/model-1.jpg" alt="Model 1"></div>
+        <div class="slide"><img src="images/model/model-2.jpg" alt="Model 2"></div>
       </div>
-
-      <!-- swipe hint line (small horizontal line) -->
-      <div class="swipe-line" aria-hidden="true"></div>
-
-      <!-- dots -->
-      <div class="dots" id="mobileDots">
-        <div class="dot active" data-index="0"></div>
-        <div class="dot" data-index="1"></div>
-      </div>
+      <div class="progress"><div class="bar" id="progressBar"></div></div>
     </div>
-    <!-- ====== END INSERTION ====== -->
 
-    <!-- keep second video box unchanged -->
+    <!-- Second video box -->
     <div class="box">
       <video autoplay muted loop playsinline preload="auto">
         <source src="background/loop/loop-background-5.mp4" type="video/mp4">
@@ -321,14 +278,11 @@
   <section class="section">
     <h2>Beyond the Ordinary</h2>
     <p>Every detail tells a story—of vision, precision, and timeless sophistication.</p>
-
     <section class="hero-2">
-      <video autoplay muted loop playsinline preload="auto" id="hero-video-2">
+      <video autoplay muted loop playsinline preload="auto">
         <source src="background/loop/loop-background-3.mp4" type="video/mp4">
       </video>
-      <div class="hero-text-2">
-        <h2>Vione Hernal</h2>
-      </div>
+      <div class="hero-text-2"><h2>Vione Hernal</h2></div>
     </section>
   </section>
 
@@ -342,86 +296,42 @@
   </div>
 
   <script>
+    // Modal logic
     const modal = document.getElementById('fashionModal');
     const closeBtn = document.getElementById('closeModal');
-    const triggers = document.querySelectorAll('.popup-trigger');
-
-    triggers.forEach(trigger => {
-      trigger.addEventListener('click', (e) => {
-        e.preventDefault();
-        modal.style.display = 'flex';
-      });
+    document.querySelectorAll('.popup-trigger').forEach(trigger => {
+      trigger.addEventListener('click', e => { e.preventDefault(); modal.style.display = 'flex'; });
     });
     closeBtn.addEventListener('click', () => modal.style.display = 'none');
-    window.addEventListener('click', e => {
-      if (e.target === modal) modal.style.display = 'none';
+    window.addEventListener('click', e => { if (e.target === modal) modal.style.display = 'none'; });
+
+    // Luxury slider JS
+    const slides = document.getElementById('luxurySlides');
+    const bar = document.getElementById('progressBar');
+    let current = 0, total = slides.children.length;
+
+    function goTo(i) {
+      if (i < 0) i = 0;
+      if (i >= total) i = total - 1;
+      current = i;
+      slides.style.transform = `translateX(-${i * 90}%)`; // 85% + margin
+      bar.style.transform = `translateX(${i * 100}%)`;
+    }
+
+    // Touch swipe
+    let startX = 0;
+    slides.addEventListener('touchstart', e => { startX = e.touches[0].clientX; }, {passive:true});
+    slides.addEventListener('touchend', e => {
+      let dx = e.changedTouches[0].clientX - startX;
+      if (dx < -40 && current < total-1) current++;
+      if (dx > 40 && current > 0) current--;
+      goTo(current);
     });
 
-    // ====== ADDED: Mobile slider JS (manual, touch + dot controls) ======
-    (function() {
-      const slidesEl = document.getElementById('mobileSlides');
-      const dotsEl = document.getElementById('mobileDots');
-      const dots = dotsEl ? Array.from(dotsEl.children) : [];
-      let current = 0;
-      const total = 2; // two images
+    goTo(0);
 
-      function goTo(index) {
-        if (index < 0) index = 0;
-        if (index >= total) index = total - 1;
-        slidesEl.style.transform = `translateX(-${index * 50}%)`;
-        current = index;
-        dots.forEach(d => d.classList.remove('active'));
-        if (dots[index]) dots[index].classList.add('active');
-      }
-
-      // dot click
-      dots.forEach(d => {
-        d.addEventListener('click', (e) => {
-          const idx = Number(d.dataset.index);
-          goTo(idx);
-        });
-      });
-
-      // touch support for mobile slider
-      let startX = 0;
-      let moved = false;
-      slidesEl.addEventListener('touchstart', (e) => {
-        startX = e.touches[0].clientX;
-        moved = false;
-      }, {passive: true});
-
-      slidesEl.addEventListener('touchmove', (e) => {
-        const dx = e.touches[0].clientX - startX;
-        // small real-time move for feedback (optional)
-        const percent = (dx / slidesEl.offsetWidth) * 100;
-        slidesEl.style.transition = 'none';
-        slidesEl.style.transform = `translateX(calc(-${current * 50}% + ${percent}%))`;
-        moved = true;
-      }, {passive: true});
-
-      slidesEl.addEventListener('touchend', (e) => {
-        slidesEl.style.transition = '';
-        if (!moved) return;
-        const endX = e.changedTouches[0].clientX;
-        const dx = endX - startX;
-        const thresh = 40; // px threshold
-        if (dx < -thresh && current < total - 1) {
-          current++;
-        } else if (dx > thresh && current > 0) {
-          current--;
-        }
-        goTo(current);
-      });
-
-      // init
-      goTo(0);
-    })();
-    // ====== END mobile slider JS ======
-
-    // Redirect back to desktop if screen is bigger
-    if (window.innerWidth > 768) {
-      window.location.href = "index-v3.html";
-    }
+    // Redirect if screen bigger
+    if (window.innerWidth > 768) window.location.href = "index-v3.html";
   </script>
 </body>
 </html>
