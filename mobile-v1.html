@@ -6,6 +6,38 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Vione Hernal | Mobile</title>
   <style>
+    /* Navbar */
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 16px;
+      background: rgba(255, 255, 255, 0.95);
+      position: fixed;
+      top: 1.5rem;
+      width: 100%;
+      z-index: 15;
+    }
+
+    .navbar .logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1rem;
+      font-weight: 400;
+      color: #111;
+      text-transform: uppercase;
+    }
+
+    .nav-links {
+      display: none;
+    }
+
+    .nav-icons a {
+      font-size: 1.2rem;
+      margin-left: 10px;
+      color: #111;
+      text-decoration: none;
+    }
+
     /* Reset */
     * {
       margin: 0;
@@ -213,99 +245,114 @@
         More</a></p>
   </header>
 
-  <!-- Hero Section 1 -->
-  <section class="hero">
-    <video autoplay muted loop playsinline preload="auto">
-      <source src="background/loop/loop-background-2.mp4" type="video/mp4">
-    </video>
-    <div class="hero-text-1">
-      <h1>Timeless Elegance</h1>
-      <p>Fashion meets innovation. Every piece authenticated and verified through blockchain. A new era of exclusivity
-        is coming!</p>
-      <a href="#" class="btn popup-trigger" data-img="images/model/model-2.jpg">Explore Collection</a>
-    </div>
-  </section>
+  <nav class="navbar">
+    <div class="logo" id="popup-trigger">Vione Hernal</div>
+    <ul class="nav-links">
+      <li><a href="#" class="popup-trigger">WOMEN</a></li>
+      <li><a href="#" class="popup-trigger">MEN</a></li>
+      <li><a href="#" class="popup-trigger">KIDS</a></li>
+      <li><a href="#" class="popup-trigger">SALE</a></li>
+      <li><a href="#" class="popup-trigger">NFT</a></li>
+      <li><a href="#" class="popup-trigger">COLLECTIONS</a></li>
+      <li><a href="#" class="popup-trigger">DISCOVER</a></li>
+      <li><a href="#" class="popup-trigger">ABOUT US</a></li>
+    </ul>
+    <div class="nav-icons">
 
-  <!-- Slider Section -->
-  <section class="slider">
-    <div class="slides">
-      <div class="slide">
-        <img src="images/model/model-1.jpg" alt="Model 1" class="popup-trigger" data-img="images/model/model-1.jpg">
+      <!-- Hero Section 1 -->
+      <section class="hero">
+        <video autoplay muted loop playsinline preload="auto">
+          <source src="background/loop/loop-background-2.mp4" type="video/mp4">
+        </video>
+        <div class="hero-text-1">
+          <h1>Timeless Elegance</h1>
+          <p>Fashion meets innovation. Every piece authenticated and verified through blockchain. A new era of
+            exclusivity
+            is coming!</p>
+          <a href="#" class="btn popup-trigger" data-img="images/model/model-2.jpg">Explore Collection</a>
+        </div>
+      </section>
+
+      <!-- Slider Section -->
+      <section class="slider">
+        <div class="slides">
+          <div class="slide">
+            <img src="images/model/model-1.jpg" alt="Model 1" class="popup-trigger" data-img="images/model/model-1.jpg">
+          </div>
+          <div class="slide">
+            <img src="images/model/model-2.jpg" alt="Model 2" class="popup-trigger" data-img="images/model/model-2.jpg">
+          </div>
+        </div>
+        <div class="slider-nav">
+          <div class="dot active"></div>
+          <div class="dot"></div>
+        </div>
+      </section>
+
+      <!-- Hero Section 2 -->
+      <section class="hero-2">
+        <video autoplay muted loop playsinline preload="auto">
+          <source src="background/loop/loop-background-3.mp4" type="video/mp4">
+        </video>
+        <div class="hero-text-2">
+          <h2>Vione Hernal</h2>
+        </div>
+      </section>
+
+      <!-- Popup Modal -->
+      <div id="fashionModal" class="modal">
+        <div class="modal-content">
+          <video autoplay muted loop playsinline preload="auto" class="smoke-bg">
+            <source src="background/effects/smoke.mp4" type="video/mp4">
+          </video>
+          <img id="popupImage" src="" alt="Popup Fashion">
+          <span id="closeModal">&times;</span>
+        </div>
       </div>
-      <div class="slide">
-        <img src="images/model/model-2.jpg" alt="Model 2" class="popup-trigger" data-img="images/model/model-2.jpg">
-      </div>
-    </div>
-    <div class="slider-nav">
-      <div class="dot active"></div>
-      <div class="dot"></div>
-    </div>
-  </section>
 
-  <!-- Hero Section 2 -->
-  <section class="hero-2">
-    <video autoplay muted loop playsinline preload="auto">
-      <source src="background/loop/loop-background-3.mp4" type="video/mp4">
-    </video>
-    <div class="hero-text-2">
-      <h2>Vione Hernal</h2>
-    </div>
-  </section>
+      <script>
+        /* Popup */
+        const modal = document.getElementById('fashionModal');
+        const closeBtn = document.getElementById('closeModal');
+        const popupImage = document.getElementById('popupImage');
+        const triggers = document.querySelectorAll('.popup-trigger');
 
-  <!-- Popup Modal -->
-  <div id="fashionModal" class="modal">
-    <div class="modal-content">
-      <video autoplay muted loop playsinline preload="auto" class="smoke-bg">
-        <source src="background/effects/smoke.mp4" type="video/mp4">
-      </video>
-      <img id="popupImage" src="" alt="Popup Fashion">
-      <span id="closeModal">&times;</span>
-    </div>
-  </div>
+        triggers.forEach(trigger => {
+          trigger.addEventListener('click', e => {
+            e.preventDefault();
+            const imgSrc = trigger.getAttribute('data-img');
+            popupImage.src = imgSrc;
+            modal.style.display = 'flex';
+          });
+        });
 
-  <script>
-    /* Popup */
-    const modal = document.getElementById('fashionModal');
-    const closeBtn = document.getElementById('closeModal');
-    const popupImage = document.getElementById('popupImage');
-    const triggers = document.querySelectorAll('.popup-trigger');
+        closeBtn.addEventListener('click', () => modal.style.display = 'none');
+        window.addEventListener('click', e => {
+          if (e.target === modal) modal.style.display = 'none';
+        });
 
-    triggers.forEach(trigger => {
-      trigger.addEventListener('click', e => {
-        e.preventDefault();
-        const imgSrc = trigger.getAttribute('data-img');
-        popupImage.src = imgSrc;
-        modal.style.display = 'flex';
-      });
-    });
+        /* Slider */
+        const slides = document.querySelector('.slides');
+        const dots = document.querySelectorAll('.dot');
+        let currentIndex = 0;
 
-    closeBtn.addEventListener('click', () => modal.style.display = 'none');
-    window.addEventListener('click', e => {
-      if (e.target === modal) modal.style.display = 'none';
-    });
+        function showSlide(index) {
+          slides.style.transform = `translateX(${-index * 100}%)`;
+          dots.forEach(dot => dot.classList.remove('active'));
+          dots[index].classList.add('active');
+          currentIndex = index;
+        }
 
-    /* Slider */
-    const slides = document.querySelector('.slides');
-    const dots = document.querySelectorAll('.dot');
-    let currentIndex = 0;
+        dots.forEach((dot, i) => {
+          dot.addEventListener('click', () => showSlide(i));
+        });
 
-    function showSlide(index) {
-      slides.style.transform = `translateX(${-index * 100}%)`;
-      dots.forEach(dot => dot.classList.remove('active'));
-      dots[index].classList.add('active');
-      currentIndex = index;
-    }
-
-    dots.forEach((dot, i) => {
-      dot.addEventListener('click', () => showSlide(i));
-    });
-
-    // Auto slide
-    setInterval(() => {
-      let next = (currentIndex + 1) % dots.length;
-      showSlide(next);
-    }, 5000);
-  </script>
+        // Auto slide
+        setInterval(() => {
+          let next = (currentIndex + 1) % dots.length;
+          showSlide(next);
+        }, 5000);
+      </script>
 </body>
 
 </html>
