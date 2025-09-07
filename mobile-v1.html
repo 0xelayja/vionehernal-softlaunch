@@ -23,16 +23,42 @@
       color: #111;
     }
 
+    /* Header / Top Banner */
+    .top-banner {
+      width: 100%;
+      background-color: #0B1F3F;
+      color: #fff;
+      text-align: center;
+      padding: 6px 0;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.8rem;
+      letter-spacing: 0.5px;
+      position: sticky;
+      top: 0;
+      z-index: 20;
+    }
+
+    .top-banner a {
+      color: #ffffff;
+      text-decoration: underline;
+      font-weight: 500;
+    }
+
+    .top-banner a:hover {
+      color: #cccccc;
+    }
+
     /* Navbar */
     .navbar {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 10px 12px;
+      padding: 6px 12px;
       background: #fff;
       border-bottom: 1px solid #eee;
       position: sticky;
-      top: 0;
+      top: 28px;
+      /* below top banner */
       z-index: 15;
     }
 
@@ -50,27 +76,33 @@
       color: #111;
     }
 
-    /* Hero video */
-    .hero {
+    /* Hero Video */
+    .hero,
+    .hero-2,
+    .bottom-video {
       position: relative;
       width: 100%;
       overflow: hidden;
-      height: 55vh;
     }
 
-    .hero video {
+    .hero video,
+    .hero-2 video,
+    .bottom-video video {
       width: 100%;
-      height: 100%;
+      height: auto;
+      min-height: 55vh;
       object-fit: cover;
+      display: block;
     }
 
+    /* Hero Text */
     .hero-text {
       position: absolute;
-      top: 50%;
+      top: 40%;
       left: 50%;
       transform: translate(-50%, -50%);
       text-align: center;
-      color: #fff;
+      color: white;
       z-index: 2;
       padding: 0 10px;
     }
@@ -78,49 +110,69 @@
     .hero-text h1 {
       font-family: 'Playfair Display', serif;
       font-size: 1.8rem;
-      letter-spacing: 1px;
-      font-weight: 700;
       margin-bottom: 0.5rem;
     }
 
     .hero-text p {
       font-size: 0.9rem;
-      font-weight: 300;
-      line-height: 1.4;
+      line-height: 1.3;
     }
 
-    /* Two boxes section */
+    /* Compact spacing */
     .bottom-boxes {
       display: flex;
       flex-direction: column;
       gap: 0.3rem;
-      margin: 0.5rem 0;
+      margin: 0.2rem 0;
+      padding: 0;
     }
 
-    .bottom-boxes .box {
-      width: 100%;
-      height: 50vh;
-      overflow: hidden;
+    /* Slider */
+    .luxury-slider {
       position: relative;
+      width: 100%;
+      height: 50vw;
+      margin: 0.2rem 0;
+      overflow: hidden;
     }
 
-    .bottom-boxes .left-box {
-      background-image: url('images/model/model-2.jpg');
-      background-size: cover;
-      background-position: center;
-      background-repeat: no-repeat;
+    .luxury-slider .slides {
+      display: flex;
+      transition: transform 0.3s ease-in-out;
     }
 
-    .bottom-boxes .right-box {
-      background-image: url('images/model/model-1.jpg');
-      background-size: cover;
-      background-position: center;
-      background-repeat: no-repeat;
+    .luxury-slider .slide {
+      flex: 0 0 85%;
+      margin-right: 5%;
+      overflow: hidden;
     }
 
-    /* Section text */
+    .luxury-slider .slide img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    /* Progress bar */
+    .luxury-slider .progress {
+      width: 70%;
+      height: 2px;
+      background: rgba(0, 0, 0, 0.2);
+      margin: 6px auto;
+      border-radius: 2px;
+    }
+
+    .luxury-slider .progress .bar {
+      height: 100%;
+      width: 0;
+      background: #111;
+      transform-origin: left;
+      transition: transform 0.3s ease-in-out;
+    }
+
     .section {
-      padding: 0.4rem 0.2rem;
+      padding: 0.4rem;
       text-align: center;
     }
 
@@ -128,63 +180,22 @@
       font-family: 'Playfair Display', serif;
       font-size: 1rem;
       margin-bottom: 0.3rem;
-      color: #111;
     }
 
     .section p {
       font-size: 0.8rem;
       color: #444;
       line-height: 1.2;
-      margin-bottom: 0.5rem;
-    }
-
-    /* Slider */
-    .luxury-slider {
-      position: relative;
-      width: 100%;
-      margin: 0.5rem 0;
-      overflow-x: scroll;
-      scroll-snap-type: x mandatory;
-      -webkit-overflow-scrolling: touch;
-    }
-
-    .luxury-slider .slides {
-      display: flex;
-      gap: 5%;
-    }
-
-    .luxury-slider .slide {
-      flex: 0 0 90%;
-      scroll-snap-align: center;
-      overflow: hidden;
-      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-    }
-
-    .luxury-slider .slide img {
-      width: 100%;
-      height: auto;
-      object-fit: cover;
-      display: block;
-    }
-
-    /* Last video */
-    .bottom-video {
-      position: relative;
-      width: 100%;
-      height: 55vh;
-      margin-top: 0.5rem;
-      overflow: hidden;
-    }
-
-    .bottom-video video {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
     }
   </style>
 </head>
 
 <body>
+
+  <!-- Top Banner -->
+  <header class="top-banner">
+    Free shipping on orders over ₱5,000! <a href="#" class="popup-trigger">Learn More</a>
+  </header>
 
   <!-- Navbar -->
   <nav class="navbar">
@@ -195,60 +206,82 @@
     </div>
   </nav>
 
-  <!-- Hero Section -->
+  <!-- Hero Video with Text -->
   <section class="hero">
     <video autoplay muted loop playsinline preload="auto">
       <source src="background/loop/loop-background-2.mp4" type="video/mp4">
     </video>
     <div class="hero-text">
       <h1>Timeless Elegance</h1>
-      <p>Fashion meets innovation. Every piece authenticated and verified through blockchain. A new era of
-        exclusivity is coming!</p>
+      <p>Fashion meets innovation. Every piece authenticated and verified through blockchain. Explore the new era of
+        exclusivity.</p>
     </div>
   </section>
 
-  <!-- Slider -->
+  <!-- Image Slider -->
   <section class="luxury-slider">
-    <div class="slides">
+    <div class="slides" id="luxurySlides">
       <div class="slide"><img src="images/model/model-1.jpg" alt="Model 1"></div>
       <div class="slide"><img src="images/model/model-2.jpg" alt="Model 2"></div>
     </div>
-  </section>
-
-  <!-- Two boxes images -->
-  <section class="bottom-boxes">
-    <div class="box left-box"></div>
-    <div class="box right-box"></div>
-  </section>
-
-  <!-- Section text -->
-  <section class="section">
-    <h2>Beyond the Ordinary</h2>
-    <p>Every detail tells a story—of vision, precision, and timeless sophistication. More than craftsmanship, it is a
-      commitment to redefine what luxury means in an age of innovation.</p>
+    <div class="progress">
+      <div class="bar" id="progressBar"></div>
+    </div>
   </section>
 
   <!-- Last Video -->
   <section class="bottom-video">
     <video autoplay muted loop playsinline preload="auto">
-      <source src="background/loop/loop-background-3.mp4" type="video/mp4">
+      <source src="background/loop/loop-background-5.mp4" type="video/mp4">
     </video>
   </section>
 
-  <div class="hero-text"> <!-- Floating text over second hero video -->
-    <h2>Vione Hernal</h2>
+  <!-- Section text -->
+  <section class="section">
+    <h2>Beyond the Ordinary</h2>
+    <p>Every detail tells a story—of vision, precision, and timeless sophistication.</p>
+  </section>
+
+  <!-- Modal Popup -->
+  <div class="modal" id="fashionModal">
+    <div class="modal-content">
+      <span class="close-btn" id="closeModal">&times;</span>
+      <video class="smoke-video" autoplay loop muted playsinline preload="auto">
+        <source src="background/loop/animation/smoke-1.mp4" type="video/mp4">
+      </video>
+      <img src="images/model/model-3.jpg" alt="Fashion Preview">
+      <h2>Coming Soon</h2>
+    </div>
   </div>
-  </section>
-  </section>
+
+  <script>
+    // Manual slider (no auto-slide)
+    const slides = document.getElementById('luxurySlides');
+    const bar = document.getElementById('progressBar');
+    const total = slides.children.length;
+    let current = 0;
+
+    function goTo(i) {
+      current = (i + total) % total; // loop
+      slides.style.transform = `translateX(-${current * 90}%)`;
+      bar.style.transform = `scaleX(${(current + 1) / total})`;
+    }
+
+    // Touch swipe
+    let startX = 0;
+    slides.addEventListener('touchstart', e => startX = e.touches[0].clientX, { passive: true });
+    slides.addEventListener('touchend', e => {
+      let dx = e.changedTouches[0].clientX - startX;
+      if (dx < -30) goTo(current + 1);
+      if (dx > 30) goTo(current - 1);
+    });
+
+    goTo(0);
+  </script>
+
+  <!-- Connect popup to main JS -->
+  <script src="main-v1.js"></script>
 
 </body>
-
-<script src="main-v1.js">
-
-  if (window.innerWidth <= 768) {
-    window.location.href = "mobile-v1.html";
-  }
-
-</script>
 
 </html>
