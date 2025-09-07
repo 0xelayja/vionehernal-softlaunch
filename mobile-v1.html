@@ -30,7 +30,6 @@
       color: #fff;
       text-align: center;
       padding: 6px 0;
-      font-family: 'Inter', sans-serif;
       font-size: 0.8rem;
       letter-spacing: 0.5px;
       position: sticky;
@@ -74,41 +73,12 @@
       background: rgba(0, 0, 0, 0.3);
       position: sticky;
       top: 68px;
-      /* below main navbar */
       z-index: 14;
       padding: 8px 12px;
       color: #fff;
     }
 
-    .sub-navbar .sub-top {
-      width: 100%;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 4px;
-    }
-
-    .sub-navbar .sub-logo {
-      font-family: 'Playfair Display', serif;
-      font-size: 0.9rem;
-      letter-spacing: 1px;
-      text-transform: uppercase;
-      color: #fff;
-    }
-
-    .sub-navbar .sub-icons a {
-      text-decoration: none;
-      color: #fff;
-      font-size: 1.5rem;
-      margin-left: 20px;
-      transition: color 0.3s ease;
-    }
-
-    .sub-navbar .sub-icons a:hover {
-      color: #ddd;
-    }
-
-    .sub-navbar .nav-links {
+    .nav-links {
       display: flex;
       justify-content: center;
       gap: 20px;
@@ -116,7 +86,7 @@
       margin-top: 4px;
     }
 
-    .sub-navbar .nav-links a {
+    .nav-links a {
       font-size: 0.7rem;
       font-weight: 500;
       letter-spacing: 1px;
@@ -124,9 +94,10 @@
       text-decoration: none;
       line-height: 1.5;
       transition: color 0.3s ease;
+      cursor: pointer;
     }
 
-    .sub-navbar .nav-links a:hover {
+    .nav-links a:hover {
       color: #fff;
     }
 
@@ -191,6 +162,7 @@
       text-transform: uppercase;
       letter-spacing: 1px;
       transition: 0.3s;
+      cursor: pointer;
     }
 
     .hero-text-1 .btn:hover {
@@ -256,6 +228,49 @@
       margin-left: auto;
       margin-right: auto;
     }
+
+    /* Modal Popup */
+    .modal {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      display: none;
+      justify-content: center;
+      align-items: center;
+      background: rgba(11, 31, 63, 0.8);
+      z-index: 1000;
+    }
+
+    .modal-content {
+      position: relative;
+      background: #fff;
+      padding: 30px;
+      border-radius: 15px;
+      text-align: center;
+      width: 80%;
+      max-width: 400px;
+    }
+
+    .modal-content img {
+      width: 100%;
+      margin-bottom: 15px;
+      border-radius: 10px;
+    }
+
+    .modal-content h2 {
+      margin-bottom: 10px;
+      font-family: 'Playfair Display', serif;
+    }
+
+    .close-btn {
+      position: absolute;
+      top: 10px;
+      right: 15px;
+      font-size: 24px;
+      cursor: pointer;
+    }
   </style>
 </head>
 
@@ -281,7 +296,7 @@
       <a href="#">DISCOVER</a>
       <a href="#">NFT</a>
       <a href="#">COLLECTIONS</a>
-      <a href="#">DISCOVER</a>
+      <a href="#">SHOP</a>
       <a href="#">ABOUT US</a>
     </div>
   </nav>
@@ -295,7 +310,7 @@
       <h1>Timeless Elegance</h1>
       <p>Fashion meets innovation. Every piece authenticated and verified through blockchain. A new era of exclusivity
         is coming!</p>
-      <a href="#luxury-slider" class="btn">Explore Collection</a>
+      <a class="btn">Explore Collection</a>
     </div>
   </section>
 
@@ -324,6 +339,43 @@
     </div>
   </section>
 
-</body>
+  <!-- Modal Popup -->
+  <div class="modal" id="fashionModal">
+    <div class="modal-content">
+      <span class="close-btn" id="closeModal">&times;</span>
+      <img src="images/model/model-3.jpg" alt="Fashion Preview">
+      <h2>Coming Soon</h2>
+    </div>
+  </div>
 
+  <!-- Popup Script -->
+  <script>
+    const modal = document.getElementById('fashionModal');
+    const closeBtn = document.getElementById('closeModal');
+    const triggers = document.querySelectorAll('.btn, .sub-navbar .nav-links a');
+
+    // Desktop popup
+    triggers.forEach(trigger => {
+      trigger.addEventListener('click', e => {
+        e.preventDefault();
+        modal.style.display = 'flex';
+      });
+    });
+
+    closeBtn.addEventListener('click', () => modal.style.display = 'none');
+    window.addEventListener('click', e => {
+      if (e.target === modal) modal.style.display = 'none';
+    });
+
+    // Mobile redirect
+    if (window.innerWidth <= 768) {
+      triggers.forEach(trigger => {
+        trigger.addEventListener('click', e => {
+          window.location.href = "mobile-v1.html";
+        });
+      });
+    }
+  </script>
+
+</body>
 </html>
