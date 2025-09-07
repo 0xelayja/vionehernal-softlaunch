@@ -47,7 +47,7 @@
       background: #fff;
       border-bottom: 1px solid #eee;
       position: sticky;
-      top: 28px; /* below top banner */
+      top: 28px;
       z-index: 15;
     }
 
@@ -65,21 +65,24 @@
       color: #111;
     }
 
-    /* Hero video */
-    .hero {
+    /* Hero Sections */
+    .hero,
+    .hero-2 {
       position: relative;
       width: 100%;
-      overflow: hidden;
       height: 55vh;
+      overflow: hidden;
     }
 
-    .hero video {
+    .hero video,
+    .hero-2 video {
       width: 100%;
       height: 100%;
       object-fit: cover;
     }
 
-    .hero-text {
+    .hero-text-1,
+    .hero-text-2 {
       position: absolute;
       top: 50%;
       left: 50%;
@@ -90,7 +93,7 @@
       padding: 0 10px;
     }
 
-    .hero-text h1 {
+    .hero-text-1 h1 {
       font-family: 'Playfair Display', serif;
       font-size: 1.8rem;
       letter-spacing: 1px;
@@ -98,25 +101,34 @@
       margin-bottom: 0.5rem;
     }
 
-    .hero-text p {
+    .hero-text-1 p {
       font-size: 0.9rem;
       font-weight: 300;
       line-height: 1.4;
-      margin-bottom: 0.8rem;
+      margin-bottom: 1rem;
     }
 
-    .hero-text .explore-btn {
+    .hero-text-1 .btn {
       display: inline-block;
-      padding: 0.5rem 1.2rem;
-      background: #111;
+      padding: 10px 25px;
+      font-size: 0.9rem;
+      font-weight: 600;
       color: #fff;
-      font-size: 0.85rem;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      border: none;
-      border-radius: 4px;
-      cursor: pointer;
+      border: 1px solid #fff;
       text-decoration: none;
+      text-transform: uppercase;
+      transition: 0.3s;
+    }
+
+    .hero-text-1 .btn:hover {
+      background: #fff;
+      color: #111;
+    }
+
+    .hero-text-2 h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 2rem;
+      letter-spacing: 1px;
     }
 
     /* Slider */
@@ -167,36 +179,6 @@
       line-height: 1.2;
       margin-bottom: 0.5rem;
     }
-
-    /* Last video */
-    .bottom-video {
-      position: relative;
-      width: 100%;
-      height: 55vh;
-      margin-top: 0.5rem;
-      overflow: hidden;
-    }
-
-    .bottom-video video {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-
-    .bottom-video .overlay-logo {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      color: #fff;
-      font-family: 'Playfair Display', serif;
-      font-size: 1.8rem;
-      font-weight: 700;
-      z-index: 2;
-      text-align: center;
-      letter-spacing: 1px;
-    }
-
   </style>
 </head>
 
@@ -221,10 +203,10 @@
     <video autoplay muted loop playsinline preload="auto">
       <source src="background/loop/loop-background-2.mp4" type="video/mp4">
     </video>
-    <div class="hero-text">
+    <div class="hero-text-1">
       <h1>Timeless Elegance</h1>
       <p>Luxury fashion redefined for the modern world.</p>
-      <a href="#" class="explore-btn">Explore Collection</a>
+      <a href="#luxury-slider" class="btn">Explore Collection</a>
     </div>
   </section>
 
@@ -242,12 +224,14 @@
     <p>Every detail tells a story—of vision, precision, and timeless sophistication.</p>
   </section>
 
-  <!-- Last Video -->
-  <section class="bottom-video">
+  <!-- Last Video with overlay text -->
+  <section class="hero-2">
     <video autoplay muted loop playsinline preload="auto">
       <source src="background/loop/loop-background-3.mp4" type="video/mp4">
     </video>
-    <div class="overlay-logo">Vione Hernal</div>
+    <div class="hero-text-2">
+      <h2>Vione Hernal</h2>
+    </div>
   </section>
 
 </body>
