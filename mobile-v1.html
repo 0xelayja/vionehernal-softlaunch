@@ -47,8 +47,7 @@
       background: #fff;
       border-bottom: 1px solid #eee;
       position: sticky;
-      top: 28px;
-      /* below top banner */
+      top: 28px; /* below top banner */
       z-index: 15;
     }
 
@@ -103,6 +102,21 @@
       font-size: 0.9rem;
       font-weight: 300;
       line-height: 1.4;
+      margin-bottom: 0.8rem;
+    }
+
+    .hero-text .explore-btn {
+      display: inline-block;
+      padding: 0.5rem 1.2rem;
+      background: #111;
+      color: #fff;
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      text-decoration: none;
     }
 
     /* Slider */
@@ -168,6 +182,21 @@
       height: 100%;
       object-fit: cover;
     }
+
+    .bottom-video .overlay-logo {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      color: #fff;
+      font-family: 'Playfair Display', serif;
+      font-size: 1.8rem;
+      font-weight: 700;
+      z-index: 2;
+      text-align: center;
+      letter-spacing: 1px;
+    }
+
   </style>
 </head>
 
@@ -195,6 +224,7 @@
     <div class="hero-text">
       <h1>Timeless Elegance</h1>
       <p>Luxury fashion redefined for the modern world.</p>
+      <a href="#" class="explore-btn">Explore Collection</a>
     </div>
   </section>
 
@@ -217,6 +247,7 @@
     <video autoplay muted loop playsinline preload="auto">
       <source src="background/loop/loop-background-3.mp4" type="video/mp4">
     </video>
+    <div class="overlay-logo">Vione Hernal</div>
   </section>
 
 </body>
