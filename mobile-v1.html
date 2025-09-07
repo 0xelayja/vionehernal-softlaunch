@@ -7,7 +7,11 @@
   <title>Vione Hernal | Mobile</title>
   <style>
     /* Reset */
-    * { margin: 0; padding: 0; box-sizing: border-box; }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
     body {
       font-family: 'Inter', sans-serif;
@@ -25,74 +29,43 @@
       font-size: 0.7rem;
       padding: 0.25rem 0.4rem;
       position: fixed;
-      top: 0; left: 0;
+      top: 0;
+      left: 0;
       width: 100%;
-      z-index: 2000;
-    }
-    .top-banner a {
-      color: #FFD700;
-      text-decoration: underline;
+      z-index: 20;
     }
 
-    /* Navigation - Ralph Lauren style */
-    .navbar {
-      background: #fff;
-      position: fixed;
-      top: 28px; /* sits below banner */
-      left: 0; width: 100%;
-      height: 56px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 0 1rem;
-      z-index: 1500;
+    /* Navigation */
+    nav {
+      background: white;
       border-bottom: 1px solid #eee;
+      padding: 0.7rem 1rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: fixed;
+      top: 20px; /* right under the banner */
+      left: 0;
+      width: 100%;
+      z-index: 19;
     }
-    .nav-icon {
-      font-size: 1.4rem;
-      cursor: pointer;
-      color: #111;
-    }
-    .nav-logo {
-      font-family: 'Playfair Display', serif;
-      font-size: 1.25rem;
-      font-weight: bold;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      color: #111;
-    }
-    .nav-right { display: flex; gap: 1rem; }
 
-    /* Drawer overlay */
-    .drawer {
-      position: fixed;
-      top: 0; left: -100%;
-      width: 80%; height: 100%;
-      background: #fff;
-      padding: 2rem 1rem;
-      transition: left 0.3s ease;
-      z-index: 2500;
-    }
-    .drawer.open { left: 0; }
-    .drawer ul { list-style: none; padding: 0; }
-    .drawer li {
-      margin-bottom: 1rem;
-      font-size: 1rem;
+    nav .logo {
       font-family: 'Playfair Display', serif;
-      cursor: pointer;
+      font-size: 1.2rem;
+      font-weight: bold;
+      color: #111;
+      letter-spacing: 1px;
     }
-    .overlay {
-      position: fixed;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
-      background: rgba(0,0,0,0.4);
-      z-index: 2000;
-      display: none;
+
+    nav .menu {
+      font-size: 0.9rem;
+      color: #333;
     }
-    .overlay.show { display: block; }
 
     /* Hero Sections */
-    .hero, .hero-2 {
+    .hero,
+    .hero-2 {
       position: relative;
       width: 100%;
       height: 70vh;
@@ -100,44 +73,62 @@
       justify-content: center;
       align-items: center;
       overflow: hidden;
-      margin-top: 84px; /* pushes below nav */
+      margin-top: 70px; /* to push below nav */
     }
-    .hero video, .hero-2 video {
+
+    .hero video,
+    .hero-2 video {
       position: absolute;
-      top: 50%; left: 50%;
-      min-width: 100%; min-height: 100%;
+      top: 50%;
+      left: 50%;
+      min-width: 100%;
+      min-height: 100%;
       transform: translate(-50%, -50%);
       object-fit: cover;
       filter: brightness(0.55);
       z-index: 1;
     }
-    .hero-text-1, .hero-text-2 {
+
+    .hero-text-1,
+    .hero-text-2 {
       position: relative;
       z-index: 2;
       text-align: center;
       padding: 0 1rem;
     }
-    .hero-text-1 h1, .hero-text-2 h2 {
+
+    .hero-text-1 h1,
+    .hero-text-2 h2 {
       font-family: 'Playfair Display', serif;
       font-size: 1.8rem;
       color: white;
       margin-bottom: 0.8rem;
     }
+
     .hero-text-1 p {
       font-size: 0.85rem;
       color: #eee;
       line-height: 1.4;
       margin-bottom: 1.2rem;
     }
+
+    /* Ralph Lauren style button */
     .btn {
       display: inline-block;
-      padding: 10px 18px;
-      font-size: 0.85rem;
+      padding: 0.6rem 1.5rem;
       border: 1px solid white;
+      background: transparent;
       color: white;
-      text-decoration: none;
+      font-family: 'Playfair Display', serif;
+      font-size: 0.9rem;
       text-transform: uppercase;
       letter-spacing: 1px;
+      transition: all 0.3s ease;
+    }
+
+    .btn:hover {
+      background: white;
+      color: #111;
     }
 
     /* Slider Section */
@@ -145,52 +136,63 @@
       position: relative;
       overflow: hidden;
       width: 100%;
-      height: 60vh;
-      margin: 1.5rem 0;
+      height: 65vh;
+      margin: 1rem 0;
     }
+
     .slides {
       display: flex;
+      transition: transform 0.5s ease-in-out;
       width: 200%;
-      height: 100%;
-      transition: transform 0.5s ease;
     }
+
     .slide {
-      width: 100%;
-      height: 100%;
-      flex-shrink: 0;
+      flex: 0 0 100%;
+      height: 65vh;
     }
+
     .slide img {
       width: 100%;
       height: 100%;
       object-fit: cover;
     }
-    .slider-controls {
+
+    /* Dots for slider */
+    .dots {
+      text-align: center;
       position: absolute;
-      top: 50%; width: 100%;
-      display: flex;
-      justify-content: space-between;
-      transform: translateY(-50%);
-      padding: 0 1rem;
-    }
-    .slider-controls span {
-      font-size: 2rem;
-      color: white;
-      cursor: pointer;
-      user-select: none;
-      text-shadow: 0 2px 6px rgba(0,0,0,0.5);
+      bottom: 10px;
+      width: 100%;
     }
 
-    /* Modal */
+    .dot {
+      display: inline-block;
+      width: 10px;
+      height: 10px;
+      margin: 0 4px;
+      background: #ccc;
+      border-radius: 50%;
+      cursor: pointer;
+    }
+
+    .dot.active {
+      background: #111;
+    }
+
+    /* Popup Modal */
     .modal {
       display: none;
       position: fixed;
-      z-index: 3000;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
+      z-index: 999;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
       background: rgba(0, 0, 0, 0.75);
       justify-content: center;
       align-items: center;
     }
+
     .modal-content {
       position: relative;
       width: 90%;
@@ -202,12 +204,7 @@
       background: #111;
       padding: 1rem;
     }
-    .modal-content img {
-      width: 100%;
-      border-radius: 10px;
-      margin-bottom: 10px;
-      box-shadow: 0 0 15px rgba(255, 215, 0, 0.6);
-    }
+
     .modal-content h2 {
       font-size: 18px;
       font-weight: 500;
@@ -215,9 +212,11 @@
       text-transform: uppercase;
       letter-spacing: 1px;
     }
+
     .close-btn {
       position: absolute;
-      top: 10px; right: 15px;
+      top: 10px;
+      right: 15px;
       font-size: 24px;
       color: white;
       cursor: pointer;
@@ -228,32 +227,15 @@
 <body>
 
   <!-- Top Banner -->
-  <div class="top-banner">
-    Free shipping on orders over $200. <a href="#" class="popup-trigger" data-img="images/model/model-1.jpg">Learn More</a>
-  </div>
+  <header class="top-banner">
+    <p>Free shipping on orders over $200. <a href="#" class="popup-trigger">Learn More</a></p>
+  </header>
 
-  <!-- Navbar -->
-  <div class="navbar">
-    <span class="nav-icon" id="openDrawer">&#9776;</span>
-    <div class="nav-logo">Vione Hernal</div>
-    <div class="nav-right">
-      <span class="nav-icon">&#128269;</span>
-      <span class="nav-icon">&#128722;</span>
-    </div>
-  </div>
-
-  <!-- Drawer Menu -->
-  <div class="drawer" id="drawerMenu">
-    <ul>
-      <li>Women</li>
-      <li>Men</li>
-      <li>Kids</li>
-      <li>Sale</li>
-      <li>Collections</li>
-      <li>About Us</li>
-    </ul>
-  </div>
-  <div class="overlay" id="overlay"></div>
+  <!-- Navigation -->
+  <nav>
+    <div class="logo">Vione Hernal</div>
+    <div class="menu">Menu</div>
+  </nav>
 
   <!-- Hero Section 1 -->
   <section class="hero">
@@ -262,22 +244,26 @@
     </video>
     <div class="hero-text-1">
       <h1>Timeless Elegance</h1>
-      <p>Fashion meets innovation. Every piece authenticated and verified through blockchain. A new era of exclusivity is coming!</p>
-      <a href="#" class="btn popup-trigger" data-img="images/model/model-2.jpg">Explore Collection</a>
+      <p>Fashion meets innovation. Every piece authenticated and verified through blockchain.</p>
+      <a href="#" class="btn popup-trigger">Explore Collection</a>
     </div>
   </section>
 
-  <!-- Image Slider -->
-  <div class="slider">
+  <!-- Image Slider Section -->
+  <section class="slider">
     <div class="slides" id="slides">
-      <div class="slide"><img src="images/model/model-1.jpg" alt="Model 1"></div>
-      <div class="slide"><img src="images/model/model-2.jpg" alt="Model 2"></div>
+      <div class="slide">
+        <img src="images/model/model-1.jpg" alt="Model 1">
+      </div>
+      <div class="slide">
+        <img src="images/model/model-2.jpg" alt="Model 2">
+      </div>
     </div>
-    <div class="slider-controls">
-      <span id="prev">&#10094;</span>
-      <span id="next">&#10095;</span>
+    <div class="dots">
+      <span class="dot active" onclick="moveSlide(0)"></span>
+      <span class="dot" onclick="moveSlide(1)"></span>
     </div>
-  </div>
+  </section>
 
   <!-- Hero Section 2 -->
   <section class="hero-2">
@@ -293,52 +279,37 @@
   <div class="modal" id="fashionModal">
     <div class="modal-content">
       <span class="close-btn" id="closeModal">&times;</span>
-      <img id="modalImage" src="" alt="Popup Preview">
       <h2>Luxury Fashion</h2>
     </div>
   </div>
 
   <script>
-    /* Drawer */
-    const drawer = document.getElementById('drawerMenu');
-    const overlay = document.getElementById('overlay');
-    document.getElementById('openDrawer').addEventListener('click', () => {
-      drawer.classList.toggle('open');
-      overlay.classList.toggle('show');
-    });
-    overlay.addEventListener('click', () => {
-      drawer.classList.remove('open');
-      overlay.classList.remove('show');
-    });
-
-    /* Slider */
-    let index = 0;
-    const slides = document.getElementById('slides');
-    document.getElementById('next').addEventListener('click', () => {
-      index = (index + 1) % 2;
-      slides.style.transform = `translateX(-${index * 100}%)`;
-    });
-    document.getElementById('prev').addEventListener('click', () => {
-      index = (index - 1 + 2) % 2;
-      slides.style.transform = `translateX(-${index * 100}%)`;
-    });
-
-    /* Modal */
+    // Modal
     const modal = document.getElementById('fashionModal');
-    const modalImg = document.getElementById('modalImage');
     const closeBtn = document.getElementById('closeModal');
-    document.querySelectorAll('.popup-trigger').forEach(trigger => {
-      trigger.addEventListener('click', e => {
+    const triggers = document.querySelectorAll('.popup-trigger');
+
+    triggers.forEach(trigger => {
+      trigger.addEventListener('click', (e) => {
         e.preventDefault();
-        const imgSrc = trigger.getAttribute('data-img');
-        modalImg.src = imgSrc || 'images/model/model-1.jpg';
         modal.style.display = 'flex';
       });
     });
+
     closeBtn.addEventListener('click', () => modal.style.display = 'none');
-    window.addEventListener('click', e => {
-      if (e.target === modal) modal.style.display = 'none';
-    });
+
+    // Slider
+    let currentIndex = 0;
+    const slides = document.getElementById('slides');
+    const dots = document.querySelectorAll('.dot');
+
+    function moveSlide(index) {
+      currentIndex = index;
+      slides.style.transform = `translateX(-${index * 100}%)`;
+      dots.forEach(dot => dot.classList.remove('active'));
+      dots[index].classList.add('active');
+    }
   </script>
 </body>
+
 </html>
