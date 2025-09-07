@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -40,17 +41,20 @@
     }
 
     /* Hero Sections */
-    .hero, .hero-2 {
+    .hero,
+    .hero-2 {
       position: relative;
       width: 100%;
-      height: 70vh; /* both videos same size */
+      height: 70vh;
+      /* both videos same size */
       display: flex;
       justify-content: center;
       align-items: center;
       overflow: hidden;
     }
 
-    .hero video, .hero-2 video {
+    .hero video,
+    .hero-2 video {
       position: absolute;
       top: 50%;
       left: 50%;
@@ -62,14 +66,16 @@
       z-index: 1;
     }
 
-    .hero-text-1, .hero-text-2 {
+    .hero-text-1,
+    .hero-text-2 {
       position: relative;
       z-index: 2;
       text-align: center;
       padding: 0 1rem;
     }
 
-    .hero-text-1 h1, .hero-text-2 h2 {
+    .hero-text-1 h1,
+    .hero-text-2 h2 {
       font-family: 'Playfair Display', serif;
       font-size: 1.8rem;
       color: white;
@@ -162,6 +168,7 @@
     }
   </style>
 </head>
+
 <body>
 
   <!-- Top Banner -->
@@ -174,19 +181,22 @@
     <video autoplay muted loop playsinline preload="auto">
       <source src="background/loop/loop-background-2.mp4" type="video/mp4">
     </video>
-    <div class="hero-text-1">
-      <h1>Timeless Elegance</h1>
-      <p>Discover the essence of modern luxury with Vione Hernal.</p>
+    <div class="hero-text-1"> <!-- Text over the video. Usually position absolute in CSS to float over. -->
+      <h1>Timeless Elegance</h1> <!-- Main headline. -->
+      <p>Fashion meets innovation. Every piece authenticated and verified through blockchain. A new era of
+        exclusivity is coming!</p> <!-- Subtext. I just kept shorttt -->
+      <a href="#" class="btn popup-trigger">Explore Collection</a>
+      <!-- Button that triggers pop-up. Class btn gives style in CSS. -->
     </div>
   </section>
 
   <!-- Model Boxes -->
   <section class="model-boxes">
     <div class="model-box left-box">
-      <img src="model/model-1.jpg" alt="Model 1">
+      <img src="images/model/model-1.jpg" alt="Model 1">
     </div>
     <div class="model-box right-box">
-      <img src="model/model-2.jpg" alt="Model 2">
+      <img src="images/model/model-2.jpg" alt="Model 2">
     </div>
   </section>
 
@@ -224,4 +234,5 @@
     closeBtn.addEventListener('click', () => modal.style.display = 'none');
   </script>
 </body>
+
 </html>
