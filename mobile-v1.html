@@ -5,223 +5,150 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Vione Hernal | Mobile Fix</title>
-
-  <link
-    href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@300;400;600&display=swap"
-    rel="stylesheet">
-
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    body {
-      font-family: 'Inter', sans-serif;
-      background: #fff;
-      color: #111;
-    }
-
-    header {
-      display: none;
-    }
-
-    .navbar {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 6px 12px;
-      background: #fff;
-      border-bottom: 1px solid #eee;
-      position: sticky;
-      top: 0;
-      z-index: 15;
-    }
-
-    .navbar .logo {
-      font-family: 'Playfair Display', serif;
-      font-size: 0.9rem;
-      letter-spacing: 1px;
-      text-transform: uppercase;
-    }
-
-    .nav-icons a {
-      margin-left: 10px;
-      font-size: 1rem;
-      text-decoration: none;
-      color: #111;
-    }
-
-    /* Hero video */
-    .hero,
-    .hero-2,
-    .bottom-video {
-      position: relative;
-      width: 100%;
-      overflow: hidden;
-      margin-bottom: 0.2rem;
-    }
-
-    .hero video,
-    .hero-2 video,
-    .bottom-video video {
-      width: 100%;
-      height: auto;
-      min-height: 55vh;
-      object-fit: cover;
-      display: block;
-    }
-
-    /* Slider */
-    .luxury-slider {
-      position: relative;
-      width: 100%;
-      margin: 0.2rem 0;
-      overflow: hidden;
-    }
-
-    .luxury-slider .slides {
-      display: flex;
-      gap: 5%;
-      transition: transform 0.6s ease-in-out;
-      padding: 0 5%;
-    }
-
-    .luxury-slider .slide {
-      flex: 0 0 90%;
-      border-radius: 8px;
-      overflow: hidden;
-      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-    }
-
-    .luxury-slider .slide img {
-      width: 100%;
-      height: auto;
-      object-fit: cover;
-      display: block;
-    }
-
-    /* Elegant progress bar */
-    .luxury-slider .progress {
-      width: 80%;
-      height: 3px;
-      background: rgba(0, 0, 0, 0.1);
-      margin: 8px auto 0;
-      border-radius: 2px;
-    }
-
-    .luxury-slider .progress .bar {
-      height: 100%;
-      width: 0;
-      background: #111;
-      transform-origin: left;
-      transition: transform 0.6s ease-in-out;
-    }
-
-    .section {
-      padding: 0.4rem;
-      text-align: center;
-    }
-
-    .section h2 {
-      font-family: 'Playfair Display', serif;
-      font-size: 1rem;
-      margin-bottom: 0.3rem;
-    }
-
-    .section p {
-      font-size: 0.8rem;
-      color: #444;
-      line-height: 1.2;
-    }
-  </style>
 </head>
 
+<style>
+  /* Hero Video */
+  .hero {
+    position: relative;
+    width: 100%;
+    height: auto;
+    /* height adjusts automatically */
+  }
+
+  .hero video {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    /* no white space */
+  }
+
+  .hero-text-1 {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    z-index: 2;
+    padding: 0 1rem;
+  }
+
+  /* Image Slider Manual Swipe */
+  .image-slider {
+    overflow-x: scroll;
+    display: flex;
+    scroll-snap-type: x mandatory;
+  }
+
+  .image-slider .slides {
+    display: flex;
+  }
+
+  .image-slider img {
+    width: 100%;
+    flex-shrink: 0;
+    scroll-snap-align: start;
+    border-radius: 0;
+    /* remove radius */
+  }
+
+  /* Optional dots (manual update on swipe if needed) */
+  .slider-dots {
+    display: flex;
+    justify-content: center;
+    margin: 5px 0;
+  }
+
+  /* Section text */
+  .section {
+    padding: 1rem;
+    text-align: center;
+  }
+
+  /* Bottom video */
+  .bottom-boxes .box video {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+  }
+</style>
+
 <body>
+  <!-- Banner -->
+  <header class="top-banner">
+    <p>Free shipping on orders over $200. <a href="#" class="popup-trigger">Learn More</a></p>
+  </header>
 
   <!-- Navbar -->
   <nav class="navbar">
     <div class="logo">Vione Hernal</div>
     <div class="nav-icons">
-      <a href="#">&#128269;</a>
-      <a href="#">&#128722;</a>
+      <a href="#" class="popup-trigger">&#128269;</a>
+      <a href="#" class="popup-trigger">&#128722;</a>
     </div>
   </nav>
 
-  <!-- First Video -->
+  <!-- Hero Video -->
   <section class="hero">
-    <video autoplay muted loop playsinline preload="auto">
+    <video autoplay muted loop playsinline preload="auto" id="hero-video-1">
       <source src="background/loop/loop-background-2.mp4" type="video/mp4">
     </video>
+    <div class="hero-text-1">
+      <h1>Timeless Elegance</h1>
+      <p>Fashion meets innovation. Authenticated through blockchain. A new era of exclusivity is coming!</p>
+      <a href="#" class="btn popup-trigger">Explore</a>
+    </div>
   </section>
 
   <!-- Image Slider -->
-  <section class="luxury-slider">
-    <div class="slides" id="luxurySlides">
-      <div class="slide"><img src="images/model/model-1.jpg" alt="Model 1"></div>
-      <div class="slide"><img src="images/model/model-2.jpg" alt="Model 2"></div>
+  <section class="image-slider">
+    <div class="slides">
+      <img src="images/slider1.jpg" alt="">
+      <img src="images/slider2.jpg" alt="">
     </div>
-    <div class="progress">
-      <div class="bar" id="progressBar"></div>
+    <!-- optional manual navigation dots -->
+    <div class="slider-dots">
+      <span class="dot active"></span>
+      <span class="dot"></span>
     </div>
   </section>
 
-  <!-- Last Video -->
-  <section class="bottom-video">
-    <video autoplay muted loop playsinline preload="auto">
-      <source src="background/loop/loop-background-5.mp4" type="video/mp4">
-    </video>
-  </section>
-
-  <!-- Section text -->
+  <!-- Section Text -->
   <section class="section">
     <h2>Beyond the Ordinary</h2>
     <p>Every detail tells a story—of vision, precision, and timeless sophistication.</p>
   </section>
 
-  <script>
-    const slides = document.getElementById('luxurySlides');
-    const bar = document.getElementById('progressBar');
-    const slideItems = slides.children;
-    const total = slideItems.length;
-    let current = 0;
+  <!-- Bottom Video -->
+  <section class="bottom-boxes">
+    <div class="box">
+      <video autoplay muted loop playsinline preload="auto">
+        <source src="background/loop/loop-background-4.mp4" type="video/mp4">
+      </video>
+    </div>
+  </section>
 
-    function updateSlider() {
-      // Center current slide
-      slides.style.transform = `translateX(-${current * 100}%)`;
-      bar.style.transform = `scaleX(${(current + 1) / total})`;
-    }
-
-    function nextSlide() {
-      current = (current + 1) % total;
-      updateSlider();
-    }
-
-    function prevSlide() {
-      current = (current - 1 + total) % total;
-      updateSlider();
-    }
-
-    // Auto-loop every 4s
-    setInterval(nextSlide, 4000);
-
-    // Touch swipe support
-    let startX = 0;
-    slides.addEventListener('touchstart', e => {
-      startX = e.touches[0].clientX;
-    }, { passive: true });
-
-    slides.addEventListener('touchend', e => {
-      let dx = e.changedTouches[0].clientX - startX;
-      if (dx < -30) nextSlide();
-      if (dx > 30) prevSlide();
-    });
-
-    // Initialize
-    updateSlider();
-  </script>
 
 </body>
+
+<script>
+
+  const modal = document.getElementById('fashionModal');
+const closeBtn = document.getElementById('closeModal');
+const triggers = document.querySelectorAll('.popup-trigger');
+
+triggers.forEach(trigger => {
+  trigger.addEventListener('click', (e) => {
+    e.preventDefault();
+    modal.style.display = 'flex';
+  });
+});
+
+closeBtn.addEventListener('click', () => modal.style.display = 'none');
+window.addEventListener('click', e => {
+  if (e.target === modal) modal.style.display = 'none';
+});
+
+</script>
 
 </html>
