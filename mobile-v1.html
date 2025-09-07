@@ -82,7 +82,13 @@
       width: 100%;
       height: 100%;
       object-fit: cover;
+      /* ensures it fills the container */
+      transform: scale(1.2);
+      /* zooms in 20% */
+      /* optional smooth transition if you animate hover or load */
+      transition: transform 0.5s ease;
     }
+
 
     .hero-text-1,
     .hero-text-2 {
