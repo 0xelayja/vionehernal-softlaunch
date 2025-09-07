@@ -7,7 +7,11 @@
   <title>Vione Hernal | Mobile</title>
   <style>
     /* Reset */
-    * { margin: 0; padding: 0; box-sizing: border-box; }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
     body {
       font-family: 'Inter', sans-serif;
@@ -17,7 +21,7 @@
       overflow-x: hidden;
     }
 
-    /* Top Banner */
+    /* Banner */
     .top-banner {
       background: #0B1F3F;
       color: white;
@@ -25,74 +29,55 @@
       font-size: 0.7rem;
       padding: 0.25rem 0.4rem;
       position: fixed;
-      top: 0; left: 0;
+      top: 0;
+      left: 0;
       width: 100%;
-      z-index: 2000;
+      z-index: 20;
     }
+
     .top-banner a {
-      color: #FFD700;
+      color: white;
+      font-weight: 500;
       text-decoration: underline;
     }
 
-    /* Navigation - Ralph Lauren style */
-    .navbar {
-      background: #fff;
-      position: fixed;
-      top: 28px; /* sits below banner */
-      left: 0; width: 100%;
-      height: 56px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 0 1rem;
-      z-index: 1500;
-      border-bottom: 1px solid #eee;
-    }
-    .nav-icon {
-      font-size: 1.4rem;
-      cursor: pointer;
-      color: #111;
-    }
-    .nav-logo {
-      font-family: 'Playfair Display', serif;
-      font-size: 1.25rem;
-      font-weight: bold;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      color: #111;
-    }
-    .nav-right { display: flex; gap: 1rem; }
 
-    /* Drawer overlay */
-    .drawer {
+    /* Navbar */
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 16px;
+      background: rgba(255, 255, 255, 0.95);
       position: fixed;
-      top: 0; left: -100%;
-      width: 80%; height: 100%;
-      background: #fff;
-      padding: 2rem 1rem;
-      transition: left 0.3s ease;
-      z-index: 2500;
+      top: 1.5rem;
+      width: 100%;
+      z-index: 15;
     }
-    .drawer.open { left: 0; }
-    .drawer ul { list-style: none; padding: 0; }
-    .drawer li {
-      margin-bottom: 1rem;
-      font-size: 1rem;
+
+    .navbar .logo {
       font-family: 'Playfair Display', serif;
-      cursor: pointer;
+      font-size: 1rem;
+      font-weight: 400;
+      color: #111;
+      text-transform: uppercase;
     }
-    .overlay {
-      position: fixed;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
-      background: rgba(0,0,0,0.4);
-      z-index: 2000;
+
+    .nav-links {
       display: none;
     }
-    .overlay.show { display: block; }
+
+    .nav-icons a {
+      font-size: 1.2rem;
+      margin-left: 10px;
+      color: #111;
+      text-decoration: none;
+    }
+
 
     /* Hero Sections */
-    .hero, .hero-2 {
+    .hero,
+    .hero-2 {
       position: relative;
       width: 100%;
       height: 70vh;
@@ -100,35 +85,46 @@
       justify-content: center;
       align-items: center;
       overflow: hidden;
-      margin-top: 84px; /* pushes below nav */
+      margin-top: 84px;
+      /* pushes below nav */
     }
-    .hero video, .hero-2 video {
+
+    .hero video,
+    .hero-2 video {
       position: absolute;
-      top: 50%; left: 50%;
-      min-width: 100%; min-height: 100%;
+      top: 50%;
+      left: 50%;
+      min-width: 100%;
+      min-height: 100%;
       transform: translate(-50%, -50%);
       object-fit: cover;
       filter: brightness(0.55);
       z-index: 1;
     }
-    .hero-text-1, .hero-text-2 {
+
+    .hero-text-1,
+    .hero-text-2 {
       position: relative;
       z-index: 2;
       text-align: center;
       padding: 0 1rem;
     }
-    .hero-text-1 h1, .hero-text-2 h2 {
+
+    .hero-text-1 h1,
+    .hero-text-2 h2 {
       font-family: 'Playfair Display', serif;
       font-size: 1.8rem;
       color: white;
       margin-bottom: 0.8rem;
     }
+
     .hero-text-1 p {
       font-size: 0.85rem;
       color: #eee;
       line-height: 1.4;
       margin-bottom: 1.2rem;
     }
+
     .btn {
       display: inline-block;
       padding: 10px 18px;
@@ -148,36 +144,42 @@
       height: 60vh;
       margin: 1.5rem 0;
     }
+
     .slides {
       display: flex;
       width: 200%;
       height: 100%;
       transition: transform 0.5s ease;
     }
+
     .slide {
       width: 100%;
       height: 100%;
       flex-shrink: 0;
     }
+
     .slide img {
       width: 100%;
       height: 100%;
       object-fit: cover;
     }
+
     .slider-controls {
       position: absolute;
-      top: 50%; width: 100%;
+      top: 50%;
+      width: 100%;
       display: flex;
       justify-content: space-between;
       transform: translateY(-50%);
       padding: 0 1rem;
     }
+
     .slider-controls span {
       font-size: 2rem;
       color: white;
       cursor: pointer;
       user-select: none;
-      text-shadow: 0 2px 6px rgba(0,0,0,0.5);
+      text-shadow: 0 2px 6px rgba(0, 0, 0, 0.5);
     }
 
     /* Modal */
@@ -185,12 +187,15 @@
       display: none;
       position: fixed;
       z-index: 3000;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
       background: rgba(0, 0, 0, 0.75);
       justify-content: center;
       align-items: center;
     }
+
     .modal-content {
       position: relative;
       width: 90%;
@@ -202,12 +207,14 @@
       background: #111;
       padding: 1rem;
     }
+
     .modal-content img {
       width: 100%;
       border-radius: 10px;
       margin-bottom: 10px;
       box-shadow: 0 0 15px rgba(255, 215, 0, 0.6);
     }
+
     .modal-content h2 {
       font-size: 18px;
       font-weight: 500;
@@ -215,9 +222,11 @@
       text-transform: uppercase;
       letter-spacing: 1px;
     }
+
     .close-btn {
       position: absolute;
-      top: 10px; right: 15px;
+      top: 10px;
+      right: 15px;
       font-size: 24px;
       color: white;
       cursor: pointer;
@@ -227,33 +236,31 @@
 
 <body>
 
-  <!-- Top Banner -->
-  <div class="top-banner">
-    Free shipping on orders over $200. <a href="#" class="popup-trigger" data-img="images/model/model-1.jpg">Learn More</a>
-  </div>
+  <header class="top-banner">
+    <p>Free shipping on orders over $200. <a href="#" class="popup-trigger">Learn More</a></p>
+  </header>
+
 
   <!-- Navbar -->
-  <div class="navbar">
-    <span class="nav-icon" id="openDrawer">&#9776;</span>
-    <div class="nav-logo">Vione Hernal</div>
-    <div class="nav-right">
-      <span class="nav-icon">&#128269;</span>
-      <span class="nav-icon">&#128722;</span>
+  <nav class="navbar">
+    <!-- Left side links -->
+    <div class="nav-left">
+      <a href="#">Men</a>
+      <a href="#">Women</a>
+      <a href="#">Kids</a>
     </div>
-  </div>
 
-  <!-- Drawer Menu -->
-  <div class="drawer" id="drawerMenu">
-    <ul>
-      <li>Women</li>
-      <li>Men</li>
-      <li>Kids</li>
-      <li>Sale</li>
-      <li>Collections</li>
-      <li>About Us</li>
-    </ul>
-  </div>
-  <div class="overlay" id="overlay"></div>
+    <!-- Center logo -->
+    <div class="logo">Vione Hernal</div>
+
+    <!-- Right side icons -->
+    <div class="nav-icons">
+      <a href="#" class="popup-trigger">&#128269;</a> <!-- Search -->
+      <a href="#" class="popup-trigger">&#128722;</a> <!-- Cart -->
+      <a href="#">Sign In</a>
+    </div>
+  </nav>
+
 
   <!-- Hero Section 1 -->
   <section class="hero">
@@ -262,7 +269,8 @@
     </video>
     <div class="hero-text-1">
       <h1>Timeless Elegance</h1>
-      <p>Fashion meets innovation. Every piece authenticated and verified through blockchain. A new era of exclusivity is coming!</p>
+      <p>Fashion meets innovation. Every piece authenticated and verified through blockchain. A new era of exclusivity
+        is coming!</p>
       <a href="#" class="btn popup-trigger" data-img="images/model/model-2.jpg">Explore Collection</a>
     </div>
   </section>
@@ -341,4 +349,5 @@
     });
   </script>
 </body>
+
 </html>
