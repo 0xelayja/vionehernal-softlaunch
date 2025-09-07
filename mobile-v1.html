@@ -7,11 +7,7 @@
   <title>Vione Hernal | Mobile</title>
   <style>
     /* Reset */
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
 
     body {
       font-family: 'Inter', sans-serif;
@@ -26,61 +22,77 @@
       background: #0B1F3F;
       color: white;
       text-align: center;
-      font-size: 0.75rem;
-      padding: 0.4rem 0.6rem;
+      font-size: 0.7rem;
+      padding: 0.25rem 0.4rem;
       position: fixed;
-      top: 0;
-      left: 0;
+      top: 0; left: 0;
       width: 100%;
-      z-index: 1000;
+      z-index: 2000;
     }
-
     .top-banner a {
       color: #FFD700;
       text-decoration: underline;
     }
 
-    /* Navbar */
+    /* Navigation - Ralph Lauren style */
     .navbar {
       background: #fff;
-      border-bottom: 1px solid #eee;
       position: fixed;
-      top: 28px;
-      /* under banner */
-      left: 0;
-      width: 100%;
-      height: 50px;
+      top: 28px; /* sits below banner */
+      left: 0; width: 100%;
+      height: 56px;
       display: flex;
       align-items: center;
       justify-content: space-between;
       padding: 0 1rem;
-      z-index: 999;
+      z-index: 1500;
+      border-bottom: 1px solid #eee;
     }
-
-    .nav-left,
-    .nav-right {
-      display: flex;
-      align-items: center;
-      gap: 1rem;
+    .nav-icon {
+      font-size: 1.4rem;
+      cursor: pointer;
+      color: #111;
     }
-
     .nav-logo {
       font-family: 'Playfair Display', serif;
-      font-size: 1.2rem;
+      font-size: 1.25rem;
       font-weight: bold;
       text-transform: uppercase;
-      color: #111;
       letter-spacing: 1px;
+      color: #111;
     }
+    .nav-right { display: flex; gap: 1rem; }
 
-    .nav-icon {
-      font-size: 1.3rem;
+    /* Drawer overlay */
+    .drawer {
+      position: fixed;
+      top: 0; left: -100%;
+      width: 80%; height: 100%;
+      background: #fff;
+      padding: 2rem 1rem;
+      transition: left 0.3s ease;
+      z-index: 2500;
+    }
+    .drawer.open { left: 0; }
+    .drawer ul { list-style: none; padding: 0; }
+    .drawer li {
+      margin-bottom: 1rem;
+      font-size: 1rem;
+      font-family: 'Playfair Display', serif;
       cursor: pointer;
     }
+    .overlay {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0,0,0,0.4);
+      z-index: 2000;
+      display: none;
+    }
+    .overlay.show { display: block; }
 
     /* Hero Sections */
-    .hero,
-    .hero-2 {
+    .hero, .hero-2 {
       position: relative;
       width: 100%;
       height: 70vh;
@@ -88,159 +100,127 @@
       justify-content: center;
       align-items: center;
       overflow: hidden;
-      margin-top: 78px;
-      /* push below fixed banner + navbar */
+      margin-top: 84px; /* pushes below nav */
     }
-
-    .hero video,
-    .hero-2 video {
+    .hero video, .hero-2 video {
       position: absolute;
-      top: 50%;
-      left: 50%;
-      min-width: 100%;
-      min-height: 100%;
+      top: 50%; left: 50%;
+      min-width: 100%; min-height: 100%;
       transform: translate(-50%, -50%);
       object-fit: cover;
       filter: brightness(0.55);
       z-index: 1;
     }
-
-    .hero-text-1,
-    .hero-text-2 {
+    .hero-text-1, .hero-text-2 {
       position: relative;
       z-index: 2;
       text-align: center;
       padding: 0 1rem;
     }
-
-    .hero-text-1 h1,
-    .hero-text-2 h2 {
+    .hero-text-1 h1, .hero-text-2 h2 {
       font-family: 'Playfair Display', serif;
       font-size: 1.8rem;
       color: white;
       margin-bottom: 0.8rem;
     }
-
     .hero-text-1 p {
-      font-size: 0.9rem;
+      font-size: 0.85rem;
       color: #eee;
       line-height: 1.4;
       margin-bottom: 1.2rem;
     }
-
     .btn {
       display: inline-block;
-      padding: 0.6rem 1.2rem;
-      font-size: 0.9rem;
-      color: #fff;
-      border: 1px solid #fff;
+      padding: 10px 18px;
+      font-size: 0.85rem;
+      border: 1px solid white;
+      color: white;
       text-decoration: none;
-      border-radius: 4px;
-      transition: all 0.3s ease;
-    }
-
-    .btn:hover {
-      background: #fff;
-      color: #111;
+      text-transform: uppercase;
+      letter-spacing: 1px;
     }
 
     /* Slider Section */
     .slider {
       position: relative;
-      width: 100%;
       overflow: hidden;
+      width: 100%;
+      height: 60vh;
       margin: 1.5rem 0;
     }
-
     .slides {
       display: flex;
-      transition: transform 0.4s ease-in-out;
+      width: 200%;
+      height: 100%;
+      transition: transform 0.5s ease;
     }
-
     .slide {
-      min-width: 100%;
-      height: 60vh;
-      position: relative;
+      width: 100%;
+      height: 100%;
+      flex-shrink: 0;
     }
-
     .slide img {
       width: 100%;
       height: 100%;
       object-fit: cover;
     }
-
-    .slider-nav {
+    .slider-controls {
       position: absolute;
-      bottom: 12px;
-      left: 50%;
-      transform: translateX(-50%);
+      top: 50%; width: 100%;
       display: flex;
-      gap: 6px;
+      justify-content: space-between;
+      transform: translateY(-50%);
+      padding: 0 1rem;
     }
-
-    .dot {
-      width: 10px;
-      height: 10px;
-      border-radius: 50%;
-      background: rgba(255, 255, 255, 0.6);
+    .slider-controls span {
+      font-size: 2rem;
+      color: white;
       cursor: pointer;
+      user-select: none;
+      text-shadow: 0 2px 6px rgba(0,0,0,0.5);
     }
 
-    .dot.active {
-      background: #FFD700;
-    }
-
-    /* Popup Modal */
+    /* Modal */
     .modal {
       display: none;
       position: fixed;
-      z-index: 2000;
-      left: 0;
-      top: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0, 0, 0, 0.85);
+      z-index: 3000;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0, 0, 0, 0.75);
       justify-content: center;
       align-items: center;
     }
-
     .modal-content {
       position: relative;
       width: 90%;
-      max-width: 450px;
-      border-radius: 16px;
-      overflow: hidden;
-    }
-
-    .modal-content .smoke-bg {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      z-index: 1;
-      opacity: 0.4;
-    }
-
-    .modal-content img {
-      position: relative;
-      z-index: 2;
-      width: 100%;
+      max-width: 350px;
       border-radius: 12px;
-      display: block;
+      text-align: center;
+      overflow: hidden;
+      box-shadow: 0 0 20px rgba(255, 215, 0, 0.4);
+      background: #111;
+      padding: 1rem;
+    }
+    .modal-content img {
+      width: 100%;
+      border-radius: 10px;
+      margin-bottom: 10px;
       box-shadow: 0 0 15px rgba(255, 215, 0, 0.6);
     }
-
-    #closeModal {
+    .modal-content h2 {
+      font-size: 18px;
+      font-weight: 500;
+      color: white;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+    .close-btn {
       position: absolute;
-      top: 10px;
-      right: 16px;
-      color: #fff;
-      font-size: 32px;
-      font-weight: bold;
+      top: 10px; right: 15px;
+      font-size: 24px;
+      color: white;
       cursor: pointer;
-      z-index: 3;
     }
   </style>
 </head>
@@ -248,22 +228,32 @@
 <body>
 
   <!-- Top Banner -->
-  <header class="top-banner">
-    <p>Free shipping on orders over $200. <a href="#" class="popup-trigger" data-img="images/model/model-1.jpg">Learn
-        More</a></p>
-  </header>
+  <div class="top-banner">
+    Free shipping on orders over $200. <a href="#" class="popup-trigger" data-img="images/model/model-1.jpg">Learn More</a>
+  </div>
 
   <!-- Navbar -->
-  <nav class="navbar">
-    <div class="nav-left">
-      <span class="nav-icon">&#9776;</span> <!-- hamburger -->
-    </div>
+  <div class="navbar">
+    <span class="nav-icon" id="openDrawer">&#9776;</span>
     <div class="nav-logo">Vione Hernal</div>
     <div class="nav-right">
-      <span class="nav-icon">&#128722;</span> <!-- shopping bag -->
-      <span class="nav-icon">&#128100;</span> <!-- user -->
+      <span class="nav-icon">&#128269;</span>
+      <span class="nav-icon">&#128722;</span>
     </div>
-  </nav>
+  </div>
+
+  <!-- Drawer Menu -->
+  <div class="drawer" id="drawerMenu">
+    <ul>
+      <li>Women</li>
+      <li>Men</li>
+      <li>Kids</li>
+      <li>Sale</li>
+      <li>Collections</li>
+      <li>About Us</li>
+    </ul>
+  </div>
+  <div class="overlay" id="overlay"></div>
 
   <!-- Hero Section 1 -->
   <section class="hero">
@@ -272,27 +262,22 @@
     </video>
     <div class="hero-text-1">
       <h1>Timeless Elegance</h1>
-      <p>Fashion meets innovation. Every piece authenticated and verified through blockchain. A new era of exclusivity
-        is coming!</p>
+      <p>Fashion meets innovation. Every piece authenticated and verified through blockchain. A new era of exclusivity is coming!</p>
       <a href="#" class="btn popup-trigger" data-img="images/model/model-2.jpg">Explore Collection</a>
     </div>
   </section>
 
-  <!-- Slider Section -->
-  <section class="slider">
-    <div class="slides">
-      <div class="slide">
-        <img src="images/model/model-1.jpg" alt="Model 1" class="popup-trigger" data-img="images/model/model-1.jpg">
-      </div>
-      <div class="slide">
-        <img src="images/model/model-2.jpg" alt="Model 2" class="popup-trigger" data-img="images/model/model-2.jpg">
-      </div>
+  <!-- Image Slider -->
+  <div class="slider">
+    <div class="slides" id="slides">
+      <div class="slide"><img src="images/model/model-1.jpg" alt="Model 1"></div>
+      <div class="slide"><img src="images/model/model-2.jpg" alt="Model 2"></div>
     </div>
-    <div class="slider-nav">
-      <div class="dot active"></div>
-      <div class="dot"></div>
+    <div class="slider-controls">
+      <span id="prev">&#10094;</span>
+      <span id="next">&#10095;</span>
     </div>
-  </section>
+  </div>
 
   <!-- Hero Section 2 -->
   <section class="hero-2">
@@ -305,59 +290,55 @@
   </section>
 
   <!-- Popup Modal -->
-  <div id="fashionModal" class="modal">
+  <div class="modal" id="fashionModal">
     <div class="modal-content">
-      <video autoplay muted loop playsinline preload="auto" class="smoke-bg">
-        <source src="background/effects/smoke.mp4" type="video/mp4">
-      </video>
-      <img id="popupImage" src="" alt="Popup Fashion">
-      <span id="closeModal">&times;</span>
+      <span class="close-btn" id="closeModal">&times;</span>
+      <img id="modalImage" src="" alt="Popup Preview">
+      <h2>Luxury Fashion</h2>
     </div>
   </div>
 
   <script>
-    /* Popup */
-    const modal = document.getElementById('fashionModal');
-    const closeBtn = document.getElementById('closeModal');
-    const popupImage = document.getElementById('popupImage');
-    const triggers = document.querySelectorAll('.popup-trigger');
+    /* Drawer */
+    const drawer = document.getElementById('drawerMenu');
+    const overlay = document.getElementById('overlay');
+    document.getElementById('openDrawer').addEventListener('click', () => {
+      drawer.classList.toggle('open');
+      overlay.classList.toggle('show');
+    });
+    overlay.addEventListener('click', () => {
+      drawer.classList.remove('open');
+      overlay.classList.remove('show');
+    });
 
-    triggers.forEach(trigger => {
+    /* Slider */
+    let index = 0;
+    const slides = document.getElementById('slides');
+    document.getElementById('next').addEventListener('click', () => {
+      index = (index + 1) % 2;
+      slides.style.transform = `translateX(-${index * 100}%)`;
+    });
+    document.getElementById('prev').addEventListener('click', () => {
+      index = (index - 1 + 2) % 2;
+      slides.style.transform = `translateX(-${index * 100}%)`;
+    });
+
+    /* Modal */
+    const modal = document.getElementById('fashionModal');
+    const modalImg = document.getElementById('modalImage');
+    const closeBtn = document.getElementById('closeModal');
+    document.querySelectorAll('.popup-trigger').forEach(trigger => {
       trigger.addEventListener('click', e => {
         e.preventDefault();
         const imgSrc = trigger.getAttribute('data-img');
-        popupImage.src = imgSrc;
+        modalImg.src = imgSrc || 'images/model/model-1.jpg';
         modal.style.display = 'flex';
       });
     });
-
     closeBtn.addEventListener('click', () => modal.style.display = 'none');
     window.addEventListener('click', e => {
       if (e.target === modal) modal.style.display = 'none';
     });
-
-    /* Slider */
-    const slides = document.querySelector('.slides');
-    const dots = document.querySelectorAll('.dot');
-    let currentIndex = 0;
-
-    function showSlide(index) {
-      slides.style.transform = `translateX(${-index * 100}%)`;
-      dots.forEach(dot => dot.classList.remove('active'));
-      dots[index].classList.add('active');
-      currentIndex = index;
-    }
-
-    dots.forEach((dot, i) => {
-      dot.addEventListener('click', () => showSlide(i));
-    });
-
-    // Auto slide
-    setInterval(() => {
-      let next = (currentIndex + 1) % dots.length;
-      showSlide(next);
-    }, 5000);
   </script>
 </body>
-
 </html>
